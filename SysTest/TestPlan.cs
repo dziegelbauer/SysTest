@@ -37,7 +37,7 @@ namespace SysTest
         
         public void AddTest(Test new_test)
         {
-            tests.Add(new_test);
+            tests.Add(new Guid(), new_test);
         }
     }
 }
