@@ -10,12 +10,12 @@ namespace SysTest
 {
     internal class TestPlan
     {
-        List<Test> tests = new List<Test>();
+         Dictionary<Guid, Test> tests = new List<Guid, Test>();
 
         public bool Serialize(String file_path) {
             StringBuilder test_data = new StringBuilder();
 
-            foreach (Test test in tests) {
+            foreach (Test test in tests.Values) {
                 test_data.Append(JsonSerializer.Serialize(test));
             }
 
