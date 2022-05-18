@@ -10,7 +10,7 @@ namespace SysTest
 {
     internal class TestPlan
     {
-         Dictionary<Guid, Test> tests = new List<Guid, Test>();
+         Dictionary<Guid, Test> tests = new Dictionary<Guid, Test>();
 
         public bool Serialize(String file_path) {
             StringBuilder test_data = new StringBuilder();
