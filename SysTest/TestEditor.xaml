@@ -10,9 +10,9 @@
         <TabControl>
             <TabItem x:Name="IcmpTab" Header="ICMP">
                 <Grid Background="#FFE5E5E5">
-                    <StackPanel>
+                    <StackPanel Orientation="Horizontal">
                         <Label Content="Test Name:"/>
-                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top"/>
+                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" />
                     </StackPanel>
                 </Grid>
             </TabItem>
