@@ -10,13 +10,25 @@
         <TabControl>
             <TabItem x:Name="IcmpTab" Header="ICMP">
                 <Grid Background="#FFE5E5E5">
-                    <StackPanel Orientation="Horizontal">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
                         <Label Content="Test Name:"/>
+                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <Label Content="Destination:"/>
                         <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" />
                     </StackPanel>
                 </Grid>
             </TabItem>
-            <TabItem Header="TabItem">
+            <TabItem x:Name="DnsTab" Header="DNS">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="WebTab" Header="Web">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>

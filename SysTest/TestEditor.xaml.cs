@@ -21,7 +21,7 @@ namespace SysTest
     {
         public TestEditor()
         {
-            InitializeComponent();
+            InitializeComponent();         
         }
     }
 }

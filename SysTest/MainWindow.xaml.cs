@@ -24,5 +24,12 @@ namespace SysTest
         {
             InitializeComponent();
         }
+
+        private void OnNewTestPlan_Cliecked(object sender, RoutedEventArgs e)
+        {
+            TestEditor te = new TestEditor();
+            te.Title = "New Test...";
+            te.ShowDialog();
+        }
     }
 }

@@ -14,10 +14,10 @@
         </Grid.RowDefinitions>
         <ToolBar Grid.Row="0" >
             <StackPanel Orientation="Horizontal">
-                <Button Content="Button" Width="25" Margin="3,0,0,0"/>
-                <Button Content="Button" Width="25" Margin="3,0,0,0"/>
-                <Button Content="Button" Width="25" Margin="3,0,0,0"/>
-                <Button Content="Button" Width="25" Margin="3,0,0,0"/>
+                <Button Content="NTP" Width="25" Margin="3,0,0,0" x:Name="new_testplan_btn" Click="OnNewTestPlan_Cliecked"/>
+                <Button Content="SV" Width="25" Margin="3,0,0,0"/>
+                <Button Content="SVA" Width="25" Margin="3,0,0,0"/>
+                <Button Content="NT" Width="25" Margin="3,0,0,0"/>
             </StackPanel>
         </ToolBar>
         <Grid Grid.Row="1">
@@ -36,7 +36,5 @@
             </ListView>
         </Grid>
         <StatusBar Grid.Row="2" />
-
-
     </Grid>
 </Window>
