@@ -30,7 +30,7 @@ namespace SysTest
 
         public bool Deserialize() { return true; }
 
-        public List<Test> Tests()
+        public Dictionary<Guid, Test> Tests()
         {
             return tests;
         }
