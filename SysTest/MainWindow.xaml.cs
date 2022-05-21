@@ -125,9 +125,17 @@ namespace SysTest
 
         private void OnDeleteTest_Clicked(object sender, RoutedEventArgs e)
         {
-            TestEditor te = new TestEditor();
-            te.Title = "New Test...";
-            te.ShowDialog();
+            if(test_tree.SelectedItem != null && test_tree?.SelectedValue != null)
+            {
+                var test_id = new Guid();
+                if(Guid.TryParse(test_tree.SelectedValue.ToString(), out test_id))
+                {
+                    _test_plan.Tests().Remove(test_id);
+                    var item = (TreeViewItem)test_tree.SelectedItem;
+                    (item.Parent as TreeViewItem).Items.Remove(item);
+                    _tp_modified = true;
+                }
+            }
         }
 
         private async void OnRunTestPlan_Clicked(object sender, RoutedEventArgs e)
