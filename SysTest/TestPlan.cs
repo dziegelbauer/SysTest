@@ -34,10 +34,17 @@ namespace SysTest
         {
             return tests;
         }
-        
-        public void AddTest(Test new_test)
+
+        public void Clear()
         {
-            tests.Add(new Guid(), new_test);
+            tests.Clear();
+        }
+        
+        public Guid AddTest(Test new_test)
+        {
+            var id = Guid.NewGuid();
+            tests.Add(id, new_test);
+            return id;
         }
     }
 }

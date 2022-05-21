@@ -1,40 +1,116 @@
-﻿<Window x:Class="SysTest.MainWindow"
+﻿<Window
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SysTest"
+        x:Class="SysTest.MainWindow"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="89*"/>
+            <ColumnDefinition Width="227*"/>
+            <ColumnDefinition Width="84*"/>
+            <ColumnDefinition Width="390*"/>
+        </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="30" />
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
-        <ToolBar Grid.Row="0" >
+        <ToolBar Grid.Row="0" Grid.ColumnSpan="5" >
             <StackPanel Orientation="Horizontal">
-                <Button Content="NTP" Width="25" Margin="3,0,0,0" x:Name="new_testplan_btn" Click="OnNewTestPlan_Cliecked"/>
-                <Button Content="SV" Width="25" Margin="3,0,0,0"/>
-                <Button Content="SVA" Width="25" Margin="3,0,0,0"/>
-                <Button Content="NT" Width="25" Margin="3,0,0,0"/>
+                <Button Width="25" Margin="3,0,0,0" x:Name="new_testplan_btn" Click="OnNewTestPlan_Clicked" ToolTip="New Test Plan">
+                    <Image Source="/SysTest;component/Images/NewTestPlan.png"/>
+                </Button>
+                <Button Width="25" Margin="3,0,0,0" x:Name="open_testplan_btn" Click="OnOpenTestPlan_Clicked" ToolTip="Open Test Plan...">
+                    <Image Source="/SysTest;component/Images/Open.png"/>
+                </Button>
+                <Button Width="25" Margin="3,0,0,0" x:Name="save_testplan_btn" Click="OnSaveTestPlan_Clicked" ToolTip="Save Test Plan...">
+                    <Image Source="/SysTest;component/Images/Save.png"/>
+                </Button>
+                <Button Width="25" Margin="12,0,0,0" x:Name="new_test_btn" Click="OnNewTest_Clicked" ToolTip="New Test">
+                    <Image Source="/SysTest;component/Images/NewTest.png"/>
+                </Button>
+                <Button Width="25" Margin="3,0,0,0" x:Name="edit_test_btn" Click="OnEditTest_Clicked" ToolTip="Edit Test">
+                    <Image Source="/SysTest;component/Images/EditTest.png"/>
+                </Button>
+                <Button Width="25" Margin="3,0,0,0" x:Name="delete_test_btn" Click="OnDeleteTest_Clicked" ToolTip="Delete Test">
+                    <Image Source="/SysTest;component/Images/DeleteTest.png"/>
+                </Button>
+                <Button Width="25" Margin="12,0,0,0" x:Name="run_testplan_btn" Click="OnRunTestPlan_Clicked" ToolTip="Run Test Plan">
+                    <Image Source="/SysTest;component/Images/RunTest.png"/>
+                </Button>
             </StackPanel>
         </ToolBar>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" Grid.ColumnSpan="5">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <TreeView x:Name="test_tree" Grid.Column="0" Margin="2,0,0,0" />
+            <TreeView x:Name="test_tree" Grid.Column="0" Margin="2,0,0,0">
+                <TreeViewItem x:Name="icmp_header">
+                    <TreeViewItem.Header>
+                        <DockPanel>
+                            <Image Source="/SysTest;component/Images/FolderClosed.png" />
+                            <TextBlock Margin="3,0,0,0">ICMP Tests</TextBlock>
+                        </DockPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem x:Name="dns_header">
+                    <TreeViewItem.Header>
+                        <DockPanel>
+                            <Image Source="/SysTest;component/Images/FolderClosed.png" />
+                            <TextBlock Margin="3,0,0,0">DNS Tests</TextBlock>
+                        </DockPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem x:Name="web_header">
+                    <TreeViewItem.Header>
+                        <DockPanel>
+                            <Image Source="/SysTest;component/Images/FolderClosed.png" />
+                            <TextBlock Margin="3,0,0,0">Web Tests</TextBlock>
+                        </DockPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+            </TreeView>
             <GridSplitter Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="5"/>
-            <ListView x:Name="result_list" Grid.Column="1" d:ItemsSource="{d:SampleData ItemCount=5}">
+            <ListView x:Name="result_list" Grid.Column="1" Margin="0,0,3,0" ItemsSource="{Binding}">
                 <ListView.View>
                     <GridView>
-                        <GridViewColumn/>
+                        <GridViewColumn Header="Status" Width="40">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Image Source="{Binding Image}" Stretch="None" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Test" Width="150" >
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Name}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Results" Width="400">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <TextBlock Text="{Binding Description}"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
                     </GridView>
                 </ListView.View>
             </ListView>
         </Grid>
-        <StatusBar Grid.Row="2" />
+        <StatusBar Grid.Row="1" Grid.ColumnSpan="5" Margin="0,374,0,0" Grid.RowSpan="2" />
     </Grid>
 </Window>

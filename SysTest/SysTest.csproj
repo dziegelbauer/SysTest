@@ -7,4 +7,30 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Remove="Images\DeleteTest.png" />
+    <None Remove="Images\EditTest.png" />
+    <None Remove="Images\FolderClosed.png" />
+    <None Remove="Images\NewTest.png" />
+    <None Remove="Images\NewTestPlan.png" />
+    <None Remove="Images\Open.png" />
+    <None Remove="Images\RunTest.png" />
+    <None Remove="Images\Save.png" />
+    <None Remove="Images\StatusError.png" />
+    <None Remove="Images\StatusOK.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\DeleteTest.png" />
+    <Resource Include="Images\EditTest.png" />
+    <Resource Include="Images\FolderClosed.png" />
+    <Resource Include="Images\NewTest.png" />
+    <Resource Include="Images\NewTestPlan.png" />
+    <Resource Include="Images\Open.png" />
+    <Resource Include="Images\RunTest.png" />
+    <Resource Include="Images\Save.png" />
+    <Resource Include="Images\StatusError.png" />
+    <Resource Include="Images\StatusOK.png" />
+  </ItemGroup>
+
 </Project>

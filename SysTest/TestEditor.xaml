@@ -5,9 +5,14 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SysTest"
         mc:Ignorable="d"
-        Title="TestEditor" Height="450" Width="800">
+        Title="TestEditor" Height="230" Width="291" WindowStyle="ToolWindow" ShowInTaskbar="False" ResizeMode="NoResize">
     <Grid>
-        <TabControl>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="118*"/>
+            <ColumnDefinition Width="26*"/>
+            <ColumnDefinition Width="147*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl Grid.ColumnSpan="3">
             <TabItem x:Name="IcmpTab" Header="ICMP">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -17,11 +22,16 @@
                     </Grid.RowDefinitions>
                     <StackPanel Orientation="Horizontal" Grid.Row="0">
                         <Label Content="Test Name:"/>
-                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" />
+                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" x:Name="icmp_test_name"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
                         <Label Content="Destination:"/>
-                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" />
+                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" x:Name="icmp_test_target"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                        <Button Content="Save" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" IsDefault="True" Click="OnIcmpSaveBtn_Clicked"></Button>
+                        <Button Content="Reset" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0"></Button>
+                        <Button Content="Cancel" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" IsCancel="True"></Button>
                     </StackPanel>
                 </Grid>
             </TabItem>

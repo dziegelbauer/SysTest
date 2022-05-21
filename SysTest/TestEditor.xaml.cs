@@ -19,9 +19,22 @@ namespace SysTest
     /// </summary>
     public partial class TestEditor : Window
     {
+        Test _result;
+
+        public Test Result
+        {
+            get { return _result; }
+        }
         public TestEditor()
         {
-            InitializeComponent();         
+            InitializeComponent();
+            _result = new Test();
+        }
+
+        public void OnIcmpSaveBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            _result = new ICMPTest(icmp_test_name.Text, icmp_test_target.Text);
+            this.DialogResult = true;
         }
     }
 }

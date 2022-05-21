@@ -6,16 +6,46 @@ using System.Threading.Tasks;
 
 namespace SysTest
 {
-    enum TestType
+    public enum TestType
     {
         Web,
         Dns,
         Icmp
     }
-    internal class Test
+    public class Test
     {
-        TestType _type;
+        protected TestType _type;
+        protected string Name = "";
 
         public TestType Type() { return _type; }
+
+        public virtual TestResult Run()
+        {
+            Random random = new Random();
+            bool success = false;
+
+            if(random.Next(0,2) == 0)
+            {
+                success = false;
+            }
+            else
+            {
+                success = true;
+            }
+
+            var r = new TestResult
+            {
+                name = $"Test{random.Next(100)}",
+                description = success ? "Test passed" : "Test failed",
+                Success = success
+            };
+
+            return r;
+        }
+
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
