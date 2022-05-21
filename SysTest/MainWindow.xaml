@@ -75,6 +75,22 @@
                         </DockPanel>
                     </TreeViewItem.Header>
                 </TreeViewItem>
+                <TreeViewItem x:Name="tcp_header">
+                    <TreeViewItem.Header>
+                        <DockPanel>
+                            <Image Source="/SysTest;component/Images/FolderClosed.png" />
+                            <TextBlock Margin="3,0,0,0">TCP Tests</TextBlock>
+                        </DockPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
+                <TreeViewItem x:Name="svc_header">
+                    <TreeViewItem.Header>
+                        <DockPanel>
+                            <Image Source="/SysTest;component/Images/FolderClosed.png" />
+                            <TextBlock Margin="3,0,0,0">SVC Tests</TextBlock>
+                        </DockPanel>
+                    </TreeViewItem.Header>
+                </TreeViewItem>
             </TreeView>
             <GridSplitter Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="5"/>
             <ListView x:Name="result_list" Grid.Column="1" Margin="0,0,3,0" ItemsSource="{Binding}">

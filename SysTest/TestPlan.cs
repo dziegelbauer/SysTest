@@ -43,7 +43,7 @@ namespace SysTest
                     
                     var id = Guid.NewGuid();
                     
-                    switch(tp_test.Type)
+                    switch(tp_test?.Type)
                     {
                         case TestType.Icmp:
                             tests.Add(id, new ICMPTest(tp_test));

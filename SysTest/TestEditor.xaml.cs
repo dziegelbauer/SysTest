@@ -14,6 +14,14 @@ using System.Windows.Shapes;
 
 namespace SysTest
 {
+    public enum TestTab
+    {
+        ICMP,
+        DNS,
+        Web,
+        TCP,
+        SVC
+    }
     /// <summary>
     /// Interaction logic for TestEditor.xaml
     /// </summary>
@@ -46,6 +54,64 @@ namespace SysTest
         {
             _result = new DNSTest(dns_test_name.Text, dns_test_target.Text, DNSRecordType.ANY);
             this.DialogResult = true;
+        }
+
+        public void DisableAll()
+        {
+            IcmpTab.IsEnabled = false;
+            DnsTab.IsEnabled = false;
+            WebTab.IsEnabled = false;
+            TCPTab.IsEnabled = false;
+            SVCTab.IsEnabled = false;
+        }
+
+        public void EnableTab(TestTab tab)
+        {
+            switch(tab)
+            {
+                case TestTab.ICMP:
+                    IcmpTab.IsEnabled = true;
+                    tab_frame.SelectedItem = IcmpTab;
+                    break;
+                case TestTab.DNS:
+                    DnsTab.IsEnabled = true;
+                    tab_frame.SelectedItem = DnsTab;
+                    break;
+                case TestTab.Web:
+                    WebTab.IsEnabled = true;
+                    tab_frame.SelectedItem = WebTab;
+                    break;
+                case TestTab.TCP:
+                    TCPTab.IsEnabled = true;
+                    tab_frame.SelectedItem = TCPTab;
+                    break;
+                case TestTab.SVC:
+                    SVCTab.IsEnabled = true;
+                    tab_frame.SelectedItem = SVCTab;
+                    break;
+            }
+        }
+
+        public void LoadTest(Test t)
+        {
+            var data = t.Serialize();
+            switch (t.Type())
+            {
+                case TestType.Icmp:                    
+                    icmp_test_name.Text = data.Name;
+                    icmp_test_target.Text = data.Target;
+                    break;
+                case TestType.Dns:
+                    dns_test_name.Text = data.Name;
+                    dns_test_target.Text = data.Target;
+                    break;
+                case TestType.Web:
+                    break;
+                case TestType.TCP:
+                    break;
+                case TestType.SVC:
+                    break;
+            }
         }
     }
 }

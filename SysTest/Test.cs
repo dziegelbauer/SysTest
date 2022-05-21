@@ -10,7 +10,9 @@ namespace SysTest
     {
         Web,
         Dns,
-        Icmp
+        Icmp,
+        TCP,
+        SVC
     }
     public class Test
     {

@@ -177,9 +177,39 @@ namespace SysTest
 
         private void OnEditTest_Clicked(object sender, RoutedEventArgs e)
         {
-            TestEditor te = new TestEditor();
-            te.Title = "New Test...";
-            te.ShowDialog();
+            if (test_tree.SelectedItem != null && test_tree?.SelectedValue != null)
+            {
+                TestEditor te = new TestEditor();
+
+                var test_id = new Guid();
+                if(Guid.TryParse(test_tree.SelectedValue.ToString(), out test_id))
+                {
+                    te.DisableAll();
+                    switch (_test_plan.Tests()[test_id].Type())
+                    {
+                        case TestType.Icmp:
+                            te.EnableTab(TestTab.ICMP);
+                            break;
+                        case TestType.Dns:
+                            break;
+                        case TestType.Web:
+                            break;
+                        case TestType.TCP:
+                            break;
+                        case TestType.SVC:
+                            break;
+                        default:
+                            break;
+                    }
+                    te.LoadTest(_test_plan.Tests()[test_id]);
+                    te.Title = "Edit Test...";
+                    if (te.ShowDialog() == true)
+                    {
+                        _test_plan.Tests()[test_id] = te.Result;
+                        ((TreeViewItem)test_tree.SelectedItem).Header = te.Result.ToString();
+                    }
+                }
+            }
         }
 
         private void OnDeleteTest_Clicked(object sender, RoutedEventArgs e)

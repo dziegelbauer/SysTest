@@ -12,7 +12,7 @@
             <ColumnDefinition Width="26*"/>
             <ColumnDefinition Width="147*"/>
         </Grid.ColumnDefinitions>
-        <TabControl Grid.ColumnSpan="3">
+        <TabControl Grid.ColumnSpan="3" x:Name="tab_frame">
             <TabItem x:Name="IcmpTab" Header="ICMP">
                 <Grid Background="#FFE5E5E5">
                     <Grid.RowDefinitions>
@@ -65,6 +65,12 @@
                 </Grid>
             </TabItem>
             <TabItem x:Name="WebTab" Header="Web">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="TCPTab" Header="TCP">
+                <Grid Background="#FFE5E5E5"/>
+            </TabItem>
+            <TabItem x:Name="SVCTab" Header="SVC">
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
