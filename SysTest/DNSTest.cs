@@ -23,6 +23,15 @@ namespace SysTest
             this.target = target;
             this._type = TestType.Dns;
             this.Name = name;
+            this.rtype = record_type;
+        }
+
+        public DNSTest(TestStructure ts)
+        {
+            this.target = ts.Target;
+            this._type = ts.Type;
+            this.Name = ts.Name;
+            this.rtype = ts.RecordType;
         }
 
         public override TestResult Run()
@@ -50,6 +59,17 @@ namespace SysTest
                     name = Name
                 };
             }
+        }
+
+        public override TestStructure Serialize()
+        {
+            return new TestStructure()
+            {
+                Type = this._type,
+                Name = this.Name,
+                Target = this.target,
+                RecordType = this.rtype
+            };
         }
     }
 }

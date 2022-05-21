@@ -48,5 +48,15 @@ namespace SysTest
         {
             return Name;
         }
+
+        public virtual TestStructure Serialize()
+        {
+            return new TestStructure()
+            {
+                Type = this._type,
+                Name = this.Name,
+                Target = this.target,
+            };
+        }
     }
 }

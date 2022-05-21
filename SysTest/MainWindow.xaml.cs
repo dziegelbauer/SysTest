@@ -68,7 +68,66 @@ namespace SysTest
 
         private void OnOpenTestPlan_Clicked(object sender, RoutedEventArgs e)
         {
+            if (_tp_modified)
+            {
+                switch (MessageBox.Show("You have unsaved changes to the current test plan.  Would you like to save them before creating a new plan?", "Unsaved Changes", MessageBoxButton.YesNoCancel))
+                {
+                    case MessageBoxResult.Yes:
+                        SaveFileDialog sfd = new SaveFileDialog();
 
+                        sfd.Filter = "Test Plans (*.tp)|*.tp|All Files (*.*)|*.*";
+
+                        if (sfd.ShowDialog() == true)
+                        {
+                            _test_plan.Serialize(sfd.FileName);
+
+                            _tp_modified = false;
+                        }
+                        break;
+                    case MessageBoxResult.Cancel:
+                        return;
+                    default:
+                        break;
+                }
+            }
+
+            OpenFileDialog ofd = new OpenFileDialog();
+
+            ofd.Filter = "Test Plans (*.tp)|*.tp|All Files (*.*)|*.*";
+
+            if(ofd.ShowDialog() == true)
+            {
+                if(_test_plan.Deserialize(ofd.FileName))
+                {
+                    var test_list = _test_plan.Tests();
+
+                    foreach(var kvp in test_list)
+                    {
+                        var test = kvp.Value;
+                        var id = kvp.Key;
+
+                        switch(test.Type())
+                        {
+                            case TestType.Icmp:
+                                icmp_header.Items.Add(new TreeViewItem()
+                                {
+                                    Tag = id.ToString(),
+                                    Header = test.ToString()
+                                });
+                                break;
+                            case TestType.Dns:
+                                dns_header.Items.Add(new TreeViewItem()
+                                {
+                                    Tag = id.ToString(),
+                                    Header = test.ToString()
+                                });
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
         }
 
         private void OnSaveTestPlan_Clicked(object sender, RoutedEventArgs e)
@@ -132,7 +191,7 @@ namespace SysTest
                 {
                     _test_plan.Tests().Remove(test_id);
                     var item = (TreeViewItem)test_tree.SelectedItem;
-                    (item.Parent as TreeViewItem).Items.Remove(item);
+                    (item.Parent as TreeViewItem)?.Items.Remove(item);
                     _tp_modified = true;
                 }
             }
@@ -141,13 +200,7 @@ namespace SysTest
         private async void OnRunTestPlan_Clicked(object sender, RoutedEventArgs e)
         {
             _testResults.Clear();
-            //_test_plan.Clear();
-
-            //for(var i = 0; i < 10; i++)
-            //{
-            //    _test_plan.AddTest(new Test());
-            //}
-            
+                        
             var opt = new UnboundedChannelOptions();
             opt.SingleReader = true;
             opt.SingleWriter = false;

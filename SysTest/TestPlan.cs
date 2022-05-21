@@ -16,7 +16,7 @@ namespace SysTest
             StringBuilder test_data = new StringBuilder();
 
             foreach (Test test in tests.Values) {
-                test_data.Append(JsonSerializer.Serialize(test));
+                test_data.Append(JsonSerializer.Serialize<TestStructure>(test.Serialize()));
             }
 
             var tp_file = File.CreateText(file_path);
@@ -28,7 +28,39 @@ namespace SysTest
             return true; 
         }
 
-        public bool Deserialize() { return true; }
+        public bool Deserialize(String file_path) {
+            if (File.Exists(file_path))
+            {
+                var tp_file = File.OpenText(file_path);
+                var tp_string = tp_file.ReadToEnd();
+                var tp_data = tp_string.Split('{', StringSplitOptions.RemoveEmptyEntries);
+
+                tests.Clear();
+
+                foreach (var s in tp_data)
+                {
+                    var tp_test = JsonSerializer.Deserialize<TestStructure>("{" + s);
+                    
+                    var id = Guid.NewGuid();
+                    
+                    switch(tp_test.Type)
+                    {
+                        case TestType.Icmp:
+                            tests.Add(id, new ICMPTest(tp_test));
+                            break;
+                        case TestType.Dns:
+                            tests.Add(id, new DNSTest(tp_test));
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                return true;
+            }
+
+            return false; 
+        }
 
         public Dictionary<Guid, Test> Tests()
         {

@@ -16,6 +16,13 @@ namespace SysTest
             this.Name = name;            
         }
 
+        public ICMPTest(TestStructure ts)
+        {
+            this.target = ts.Target;
+            this._type = ts.Type;
+            this.Name = ts.Name;
+        }
+
         public override TestResult Run()
         {
             var ping_sender = new Ping();
@@ -59,6 +66,16 @@ namespace SysTest
                     name = Name
                 };
             }
+        }
+
+        public override TestStructure Serialize()
+        {
+            return new TestStructure()
+            {
+                Type = this._type,
+                Name = this.Name,
+                Target = this.target,
+            };
         }
     }
 }
