@@ -16,6 +16,7 @@ namespace SysTest
     {
         protected TestType _type;
         protected string Name = "";
+        protected string target = "";
 
         public TestType Type() { return _type; }
 

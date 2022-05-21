@@ -41,5 +41,11 @@ namespace SysTest
         {
             this.DialogResult = false;
         }
+
+        public void OnDnsSaveBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            _result = new DNSTest(dns_test_name.Text, dns_test_target.Text, DNSRecordType.ANY);
+            this.DialogResult = true;
+        }
     }
 }

@@ -49,12 +49,12 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="1">
                         <Label Content="Query:"/>
-                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" x:Name="dns_test_target"/>
+                        <TextBox TextWrapping="NoWrap" Text="" Width="220" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" x:Name="dns_test_target"/>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2">
                         <Label>Record Type:</Label>
                         <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">A</RadioButton>
-                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">AAAAA</RadioButton>
+                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">AAAA</RadioButton>
                         <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">Any</RadioButton>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3">

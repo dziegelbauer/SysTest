@@ -9,8 +9,6 @@ namespace SysTest
 {
     internal class ICMPTest : Test
     {
-        string target = "";
-
         public ICMPTest(string name, string target)
         {
             this.target = target;
