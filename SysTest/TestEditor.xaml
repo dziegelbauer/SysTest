@@ -30,13 +30,39 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="2">
                         <Button Content="Save" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" IsDefault="True" Click="OnIcmpSaveBtn_Clicked"></Button>
-                        <Button Content="Reset" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0"></Button>
+                        <Button Content="Reset" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" Click="OnCancelBtn_Clicked"></Button>
                         <Button Content="Cancel" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" IsCancel="True"></Button>
                     </StackPanel>
                 </Grid>
             </TabItem>
             <TabItem x:Name="DnsTab" Header="DNS">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="30" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Row="0">
+                        <Label Content="Test Name:"/>
+                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" x:Name="dns_test_name"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                        <Label Content="Query:"/>
+                        <TextBox TextWrapping="NoWrap" Text="" Width="120" Height="20" VerticalAlignment="Top" HorizontalAlignment="Left" Padding="0,3,0,0" Margin="0,3,0,0" x:Name="dns_test_target"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="2">
+                        <Label>Record Type:</Label>
+                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">A</RadioButton>
+                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">AAAAA</RadioButton>
+                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">Any</RadioButton>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Grid.Row="3">
+                        <Button Content="Save" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" IsDefault="True" Click="OnDnsSaveBtn_Clicked"></Button>
+                        <Button Content="Reset" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" Click="OnCancelBtn_Clicked"></Button>
+                        <Button Content="Cancel" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" IsCancel="True"></Button>
+                    </StackPanel>
+                </Grid>
             </TabItem>
             <TabItem x:Name="WebTab" Header="Web">
                 <Grid Background="#FFE5E5E5"/>

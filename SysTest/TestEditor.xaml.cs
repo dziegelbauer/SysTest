@@ -36,5 +36,10 @@ namespace SysTest
             _result = new ICMPTest(icmp_test_name.Text, icmp_test_target.Text);
             this.DialogResult = true;
         }
+
+        public void OnCancelBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = false;
+        }
     }
 }
