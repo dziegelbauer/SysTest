@@ -6,9 +6,9 @@ using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SysTest.Tests
+namespace SysTest
 {
-    internal class TCPTest : Test
+    public class TCPTest : Test
     {
         private ushort Port;
         public TCPTest(string name, string target, ushort port)

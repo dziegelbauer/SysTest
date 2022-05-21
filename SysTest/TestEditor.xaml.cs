@@ -56,6 +56,20 @@ namespace SysTest
             this.DialogResult = true;
         }
 
+        public void OnTcpSaveBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            ushort p;
+            if (ushort.TryParse(tcp_test_port.Text, out p))
+            {
+                _result = new TCPTest(tcp_test_name.Text, tcp_test_target.Text, p);
+                this.DialogResult = true;
+            }
+            else
+            {
+                MessageBox.Show("Invlaid port value", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
         public void DisableAll()
         {
             IcmpTab.IsEnabled = false;

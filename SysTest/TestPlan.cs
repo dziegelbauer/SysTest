@@ -33,6 +33,7 @@ namespace SysTest
             {
                 var tp_file = File.OpenText(file_path);
                 var tp_string = tp_file.ReadToEnd();
+                tp_file.Close();
                 var tp_data = tp_string.Split('{', StringSplitOptions.RemoveEmptyEntries);
 
                 tests.Clear();

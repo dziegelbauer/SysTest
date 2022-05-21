@@ -169,6 +169,13 @@ namespace SysTest
                             Header = new_test.ToString()
                         });
                         break;
+                    case TestType.TCP:
+                        tcp_header.Items.Add(new TreeViewItem()
+                        {
+                            Tag = id.ToString(),
+                            Header = id.ToString(),
+                        });
+                        break;
                     default:
                         break;
                 }
