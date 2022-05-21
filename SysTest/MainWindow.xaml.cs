@@ -122,6 +122,13 @@ namespace SysTest
                                     Header = test.ToString()
                                 });
                                 break;
+                            case TestType.TCP:
+                                tcp_header.Items.Add(new TreeViewItem()
+                                {
+                                    Tag = id.ToString(),
+                                    Header = test.ToString()
+                                });
+                                break;
                             default:
                                 break;
                         }
@@ -198,10 +205,12 @@ namespace SysTest
                             te.EnableTab(TestTab.ICMP);
                             break;
                         case TestType.Dns:
+                            te.EnableTab(TestTab.DNS);
                             break;
                         case TestType.Web:
                             break;
                         case TestType.TCP:
+                            te.EnableTab(TestTab.TCP);
                             break;
                         case TestType.SVC:
                             break;
