@@ -21,6 +21,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="System.ServiceProcess.ServiceController" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Resource Include="Images\DeleteTest.png" />
     <Resource Include="Images\EditTest.png" />
     <Resource Include="Images\FolderClosed.png" />

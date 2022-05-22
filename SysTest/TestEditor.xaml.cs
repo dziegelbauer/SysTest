@@ -70,6 +70,12 @@ namespace SysTest
             }
         }
 
+        public void OnSvcSaveBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+            _result = new SVCTest(svc_test_name.Text, svc_test_target.Text, svc_test_svcname.Text);
+            this.DialogResult = true;
+        }
+
         public void DisableAll()
         {
             IcmpTab.IsEnabled = false;
@@ -122,8 +128,14 @@ namespace SysTest
                 case TestType.Web:
                     break;
                 case TestType.TCP:
+                    tcp_test_name.Text = data.Name;
+                    tcp_test_target.Text = data.Target;
+                    tcp_test_port.Text = data.Port.ToString();
                     break;
                 case TestType.SVC:
+                    svc_test_name.Text = data.Name;
+                    svc_test_target.Text = data.Target;
+                    svc_test_svcname.Text = data.SvcName;
                     break;
             }
         }

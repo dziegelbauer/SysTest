@@ -129,6 +129,13 @@ namespace SysTest
                                     Header = test.ToString()
                                 });
                                 break;
+                            case TestType.SVC:
+                                svc_header.Items.Add(new TreeViewItem()
+                                {
+                                    Tag = id.ToString(),
+                                    Header = test.ToString()
+                                });
+                                break;
                             default:
                                 break;
                         }
@@ -183,6 +190,13 @@ namespace SysTest
                             Header = id.ToString(),
                         });
                         break;
+                    case TestType.SVC:
+                        svc_header.Items.Add(new TreeViewItem()
+                        {
+                            Tag = id.ToString(),
+                            Header = id.ToString(),
+                        });
+                        break;
                     default:
                         break;
                 }
@@ -213,6 +227,7 @@ namespace SysTest
                             te.EnableTab(TestTab.TCP);
                             break;
                         case TestType.SVC:
+                            te.EnableTab(TestTab.SVC);
                             break;
                         default:
                             break;

@@ -13,10 +13,12 @@ namespace SysTest
         public string Target { get; set; }
         public DNSRecordType RecordType { get; set; }
         public ushort Port { get; set; }
+        public string SvcName { get; set; }
         public TestStructure()
         {
             Name = "";
             Target = "";
+            SvcName = "";
         }
 
     }
