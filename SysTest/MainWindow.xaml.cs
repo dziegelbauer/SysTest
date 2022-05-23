@@ -35,6 +35,18 @@ namespace SysTest
         private bool _tp_modified = false;
         private ObservableCollection<TestResult> _testResults = new ObservableCollection<TestResult>();
 
+        private void ClearTests()
+        {
+            _tp_modified = false;
+
+            ((TreeViewItem)test_tree.Items[0]).Items.Clear();
+            ((TreeViewItem)test_tree.Items[1]).Items.Clear();
+            ((TreeViewItem)test_tree.Items[2]).Items.Clear();
+            ((TreeViewItem)test_tree.Items[3]).Items.Clear();
+            ((TreeViewItem)test_tree.Items[4]).Items.Clear();
+            _test_plan.Clear();
+        }
+
         private void OnNewTestPlan_Clicked(object sender, RoutedEventArgs e)
         {
             if(_tp_modified)
@@ -50,15 +62,11 @@ namespace SysTest
                         {
                             _test_plan.Serialize(sfd.FileName);
 
-                            _tp_modified = false;
-
-                            test_tree.Items.Clear();
-                            _test_plan.Clear();
+                            ClearTests();
                         }
                         break;
                     case MessageBoxResult.No:
-                        test_tree.Items.Clear();
-                        _test_plan.Clear();
+                        ClearTests();
                         break;
                     default:
                         break;
