@@ -72,6 +72,10 @@ namespace SysTest
                         break;
                 }
             }
+            else
+            {
+                ClearTests();
+            }
         }
 
         private void OnOpenTestPlan_Clicked(object sender, RoutedEventArgs e)
