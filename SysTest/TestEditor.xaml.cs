@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -58,21 +59,39 @@ namespace SysTest
 
         public void OnWebSaveBtn_Clicked(object sender, RoutedEventArgs e)
         {
+            uint rcode = 0;
+            if(!uint.TryParse(web_test_response.Text, out rcode))
+            {
+                MessageBox.Show("Code is not a valid http response code.", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Error);
+                e.Handled = true;
+                return;
+            }
 
+            Uri? uri;
+            UriCreationOptions opts = new UriCreationOptions();
+            if (!Uri.TryCreate(web_test_url.Text, opts, out uri))
+            {
+                MessageBox.Show("URL is not a valid http/https URL.", "Invalid input", MessageBoxButton.OK, MessageBoxImage.Error);
+                e.Handled = true;
+                return;
+            }
+
+            _result = new WebTest(web_test_name.Text, web_test_url.Text, uint.Parse(web_test_response.Text));
+            this.DialogResult = true;
         }
 
         public void OnTcpSaveBtn_Clicked(object sender, RoutedEventArgs e)
         {
             ushort p;
-            if (ushort.TryParse(tcp_test_port.Text, out p))
-            {
-                _result = new TCPTest(tcp_test_name.Text, tcp_test_target.Text, p);
-                this.DialogResult = true;
-            }
-            else
+            if (!ushort.TryParse(tcp_test_port.Text, out p))
             {
                 MessageBox.Show("Invlaid port value", "Input Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                e.Handled = true;
+                return;
             }
+
+            _result = new TCPTest(tcp_test_name.Text, tcp_test_target.Text, p);
+            this.DialogResult = true;
         }
 
         public void OnSvcSaveBtn_Clicked(object sender, RoutedEventArgs e)
