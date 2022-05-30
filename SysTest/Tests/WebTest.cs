@@ -16,22 +16,22 @@ namespace SysTest
         {
             this.Name = name;
             this.ResponseCode = code;
-            this.target = target;
-            this._type = TestType.Web;
+            this.Target = target;
+            this.Type = TestType.Web;
         }
 
         public WebTest(TestStructure ts)
         {
             this.Name = ts.Name;
-            this._type = ts.Type;
+            this.Type = ts.Type;
             this.ResponseCode = 200;
-            this.target = ts.Target;
+            this.Target = ts.Target;
         }
 
         public override TestResult Run()
         {
             var client = new HttpClient();
-            var req = new HttpRequestMessage(HttpMethod.Get, this.target);
+            var req = new HttpRequestMessage(HttpMethod.Get, this.Target);
             req.Headers.Add("User-Agent", "SysTest");
             var response = client.Send(req);
 
@@ -40,7 +40,7 @@ namespace SysTest
                 return new TestResult()
                 {
                     Success = true,
-                    description = $"Received {response?.StatusCode} from {target}",
+                    description = $"Received {response?.StatusCode} from {Target}",
                     name = Name
                 };
             }
@@ -49,7 +49,7 @@ namespace SysTest
                 return new TestResult()
                 {
                     Success = false,
-                    description = $"Received {response?.StatusCode} from {target}",
+                    description = $"Received {response?.StatusCode} from {Target}",
                     name = Name
                 };
             }
@@ -58,7 +58,7 @@ namespace SysTest
                 return new TestResult()
                 {
                     Success = false,
-                    description = $"Received no response from {target}",
+                    description = $"Received no response from {Target}",
                     name = Name
                 };
             }
@@ -68,9 +68,9 @@ namespace SysTest
         {
             return new TestStructure()
             {
-                Type = this._type,
+                Type = this.Type,
                 Name = this.Name,
-                Target = this.target,
+                Target = this.Target,
                 ResponseCode = this.ResponseCode,
             };
         }

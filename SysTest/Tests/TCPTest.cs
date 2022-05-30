@@ -13,16 +13,16 @@ namespace SysTest
         private ushort Port;
         public TCPTest(string name, string target, ushort port)
         {
-            this.target = target;
-            this._type = TestType.TCP;
+            this.Target = target;
+            this.Type = TestType.TCP;
             this.Name = name;
             Port = port;
         }
 
         public TCPTest(TestStructure ts)
         {
-            this.target = ts.Target;
-            this._type = ts.Type;
+            this.Target = ts.Target;
+            this.Type = ts.Type;
             this.Name = ts.Name;
             this.Port = ts.Port;
         }
@@ -31,16 +31,16 @@ namespace SysTest
         {
             var ipaddr = new IPAddress(new byte[] { 127, 0, 0, 1 });
 
-            if(!IPAddress.TryParse(this.target, out ipaddr))
+            if(!IPAddress.TryParse(this.Target, out ipaddr))
             {
-                var resolution = Dns.GetHostEntry(this.target);
+                var resolution = Dns.GetHostEntry(this.Target);
                 if(resolution == null)
                 {
                     return new TestResult()
                     {
                         name = this.Name,
                         Success = false,
-                        description = $"Invalid target: {this.target}"
+                        description = $"Invalid target: {this.Target}"
                     };
                 }
                 else
@@ -59,7 +59,7 @@ namespace SysTest
                         {
                             name = this.Name,
                             Success = true,
-                            description = $"Successfully connected to {this.target} on port {this.Port}"
+                            description = $"Successfully connected to {this.Target} on port {this.Port}"
                         };
                     }
                     catch(SocketException e)
@@ -68,7 +68,7 @@ namespace SysTest
                         {
                             name = this.Name,
                             Success = false,
-                            description = $"Socket exception connecting to {this.target}: {e.Message}"
+                            description = $"Socket exception connecting to {this.Target}: {e.Message}"
                         };
                     }
                     catch(Exception err)
@@ -77,7 +77,7 @@ namespace SysTest
                         {
                             name = this.Name,
                             Success = false,
-                            description = $"Unexpected error connecting to {this.target}: {err.Message}"
+                            description = $"Unexpected error connecting to {this.Target}: {err.Message}"
                         };
                     }
                 }
@@ -88,7 +88,7 @@ namespace SysTest
                 {
                     name = this.Name,
                     Success = false,
-                    description = $"Invalid target: {this.target}"
+                    description = $"Invalid target: {this.Target}"
                 };
             }
         }
@@ -97,9 +97,9 @@ namespace SysTest
         {
             return new TestStructure()
             {
-                Type = this._type,
+                Type = this.Type,
                 Name = this.Name,
-                Target = this.target,
+                Target = this.Target,
                 Port = this.Port,
             };
         }

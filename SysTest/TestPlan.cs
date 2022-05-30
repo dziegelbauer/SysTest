@@ -12,7 +12,7 @@ namespace SysTest
     {
         Dictionary<Guid, Test> tests = new Dictionary<Guid, Test>();
 
-        public bool Serialize(String file_path) {
+        public bool Serialize(string file_path) {
             StringBuilder test_data = new StringBuilder();
 
             foreach (Test test in tests.Values) {
@@ -28,7 +28,7 @@ namespace SysTest
             return true; 
         }
 
-        public bool Deserialize(String file_path) {
+        public bool Deserialize(string file_path) {
             if (File.Exists(file_path))
             {
                 var tp_file = File.OpenText(file_path);

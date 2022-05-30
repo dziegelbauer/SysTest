@@ -11,15 +11,15 @@ namespace SysTest
     {
         public ICMPTest(string name, string target)
         {
-            this.target = target;
-            this._type = TestType.Icmp;
+            this.Target = target;
+            this.Type = TestType.Icmp;
             this.Name = name;            
         }
 
         public ICMPTest(TestStructure ts)
         {
-            this.target = ts.Target;
-            this._type = ts.Type;
+            this.Target = ts.Target;
+            this.Type = ts.Type;
             this.Name = ts.Name;
         }
 
@@ -28,7 +28,7 @@ namespace SysTest
             var ping_sender = new Ping();
             var options = new PingOptions();
 
-            var reply = ping_sender.Send(target);
+            var reply = ping_sender.Send(Target);
 
             if(reply.Status == IPStatus.Success)
             {
@@ -44,19 +44,19 @@ namespace SysTest
                 switch (reply.Status)
                 {
                     case IPStatus.TimedOut:
-                        error_string = $"Timeout waiting for {target}";
+                        error_string = $"Timeout waiting for {Target}";
                         break;
                     case IPStatus.DestinationHostUnreachable:
-                        error_string = $"Destination host unreachable sending to {target}";
+                        error_string = $"Destination host unreachable sending to {Target}";
                         break;
                     case IPStatus.DestinationUnreachable:
-                        error_string = $"Destination unreachable sending to {target}";
+                        error_string = $"Destination unreachable sending to {Target}";
                         break;
                     case IPStatus.DestinationNetworkUnreachable:
-                        error_string = $"Destination network unreachable sending to {target}";
+                        error_string = $"Destination network unreachable sending to {Target}";
                         break;
                     default:
-                        error_string = $"{reply.Status.ToString()} sending to {target}";
+                        error_string = $"{reply.Status.ToString()} sending to {Target}";
                         break;
                 }
                 return new TestResult()
@@ -72,9 +72,9 @@ namespace SysTest
         {
             return new TestStructure()
             {
-                Type = this._type,
+                Type = this.Type,
                 Name = this.Name,
-                Target = this.target,
+                Target = this.Target,
             };
         }
     }

@@ -118,7 +118,7 @@ namespace SysTest
                         var test = kvp.Value;
                         var id = kvp.Key;
 
-                        switch(test.Type())
+                        switch(test.GetType())
                         {
                             case TestType.Icmp:
                                 icmp_header.Items.Add(new TreeViewItem()
@@ -186,7 +186,7 @@ namespace SysTest
                 _tp_modified = true;
                 var new_test = te.Result;
                 var id = _test_plan.AddTest(new_test);
-                switch(new_test.Type())
+                switch(new_test.GetType())
                 {
                     case TestType.Icmp:
                         icmp_header.Items.Add(new TreeViewItem()
@@ -239,7 +239,7 @@ namespace SysTest
                 if(Guid.TryParse(test_tree.SelectedValue.ToString(), out test_id))
                 {
                     te.DisableAll();
-                    switch (_test_plan.Tests()[test_id].Type())
+                    switch (_test_plan.Tests()[test_id].GetType())
                     {
                         case TestType.Icmp:
                             te.EnableTab(TestTab.ICMP);

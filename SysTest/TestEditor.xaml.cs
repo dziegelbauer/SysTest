@@ -139,7 +139,7 @@ namespace SysTest
         public void LoadTest(Test t)
         {
             var data = t.Serialize();
-            switch (t.Type())
+            switch (t.GetType())
             {
                 case TestType.Icmp:                    
                     icmp_test_name.Text = data.Name;

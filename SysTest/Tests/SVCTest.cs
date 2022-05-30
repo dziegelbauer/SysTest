@@ -12,23 +12,23 @@ namespace SysTest
         private string SvcName;
         public SVCTest(string name, string target, string svc)
         {
-            this.target = target;
-            this._type = TestType.TCP;
+            this.Target = target;
+            this.Type = TestType.TCP;
             this.Name = name;
             SvcName = svc;
         }
 
         public SVCTest(TestStructure ts)
         {
-            this.target = ts.Target;
-            this._type = ts.Type;
+            this.Target = ts.Target;
+            this.Type = ts.Type;
             this.Name = ts.Name;
             this.SvcName = ts.SvcName;
         }
 
         public override TestResult Run()
         {
-            var sc = new ServiceController(SvcName, target);
+            var sc = new ServiceController(SvcName, Target);
 
             try
             {
@@ -39,7 +39,7 @@ namespace SysTest
                     {
                         name = this.Name,
                         Success = true,
-                        description = $"Service {this.SvcName} running on {this.target}"
+                        description = $"Service {this.SvcName} running on {this.Target}"
                     };
                 }
                 else
@@ -48,7 +48,7 @@ namespace SysTest
                     {
                         name = this.Name,
                         Success = false,
-                        description = $"Service {this.SvcName} not running on {this.target}"
+                        description = $"Service {this.SvcName} not running on {this.Target}"
                     };
                 }
             }
@@ -68,9 +68,9 @@ namespace SysTest
         {
             return new TestStructure()
             {
-                Type = this._type,
+                Type = this.Type,
                 Name = this.Name,
-                Target = this.target,
+                Target = this.Target,
                 SvcName = this.SvcName,
             };
         }

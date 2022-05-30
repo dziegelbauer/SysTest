@@ -16,11 +16,11 @@ namespace SysTest
     }
     public class Test
     {
-        protected TestType _type;
+        protected TestType Type;
         protected string Name = "";
-        protected string target = "";
+        protected string Target = "";
 
-        public TestType Type() { return _type; }
+        public new TestType GetType() { return Type; }
 
         public virtual TestResult Run()
         {
@@ -55,9 +55,9 @@ namespace SysTest
         {
             return new TestStructure()
             {
-                Type = this._type,
+                Type = this.Type,
                 Name = this.Name,
-                Target = this.target,
+                Target = this.Target,
             };
         }
     }

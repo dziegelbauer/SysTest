@@ -22,8 +22,8 @@ namespace SysTest
 
         public DNSTest(string name, string target, DNSRecordType record_type, string server)
         {
-            this.target = target;
-            this._type = TestType.Dns;
+            this.Target = target;
+            this.Type = TestType.Dns;
             this.Name = name;
             this.rtype = record_type;
             this.server = server;
@@ -31,8 +31,8 @@ namespace SysTest
 
         public DNSTest(TestStructure ts)
         {
-            this.target = ts.Target;
-            this._type = ts.Type;
+            this.Target = ts.Target;
+            this.Type = ts.Type;
             this.Name = ts.Name;
             this.rtype = ts.RecordType;
             this.server = ts.DNSServer;
@@ -49,20 +49,20 @@ namespace SysTest
 
             resolver.DnsServer = server;
             resolver.UseCache = false;
-            var result = resolver.Query(target, QueryType, DNS.QClass.ANY);
+            var result = resolver.Query(Target, QueryType, DNS.QClass.ANY);
 
             if (result.Answers.Count > 0)
             {
                 return new TestResult()
                 {
                     Success = true,
-                    description = $"Received {result.Answers.Count} results for {target}",
+                    description = $"Received {result.Answers.Count} results for {Target}",
                     name = Name
                 };
             }
             else
             {
-                var error_string = $"No results found for {target}";
+                var error_string = $"No results found for {Target}";
 
                 return new TestResult()
                 {
@@ -106,9 +106,9 @@ namespace SysTest
         {
             return new TestStructure()
             {
-                Type = this._type,
+                Type = this.Type,
                 Name = this.Name,
-                Target = this.target,
+                Target = this.Target,
                 RecordType = this.rtype,
                 DNSServer = this.server,
             };
