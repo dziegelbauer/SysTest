@@ -15,6 +15,7 @@ namespace SysTest
         public ushort Port { get; set; }
         public string SvcName { get; set; }
         public string DNSServer {  get; set; }
+        public uint ResponseCode { get; set; }
         public TestStructure()
         {
             Name = "";

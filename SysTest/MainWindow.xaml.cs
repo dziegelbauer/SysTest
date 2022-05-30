@@ -134,6 +134,13 @@ namespace SysTest
                                     Header = test.ToString()
                                 });
                                 break;
+                            case TestType.Web:
+                                web_header.Items.Add(new TreeViewItem()
+                                {
+                                    Tag = id.ToString(),
+                                    Header = test.ToString(),
+                                });
+                                break;
                             case TestType.TCP:
                                 tcp_header.Items.Add(new TreeViewItem()
                                 {
@@ -195,6 +202,13 @@ namespace SysTest
                             Header = new_test.ToString()
                         });
                         break;
+                    case TestType.Web:
+                        web_header.Items.Add(new TreeViewItem()
+                        {
+                            Tag = id.ToString(),
+                            Header = new_test.ToString(),
+                        });
+                        break;
                     case TestType.TCP:
                         tcp_header.Items.Add(new TreeViewItem()
                         {
@@ -234,6 +248,7 @@ namespace SysTest
                             te.EnableTab(TestTab.DNS);
                             break;
                         case TestType.Web:
+                            te.EnableTab(TestTab.Web);
                             break;
                         case TestType.TCP:
                             te.EnableTab(TestTab.TCP);

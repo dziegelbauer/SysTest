@@ -52,8 +52,14 @@ namespace SysTest
                         case TestType.Dns:
                             tests.Add(id, new DNSTest(tp_test));
                             break;
+                        case TestType.Web:
+                            tests.Add(id, new WebTest(tp_test));
+                            break;
                         case TestType.TCP:
                             tests.Add(id, new TCPTest(tp_test));
+                            break;
+                        case TestType.SVC:
+                            tests.Add(id, new SVCTest(tp_test));
                             break;
                         default:
                             break;
