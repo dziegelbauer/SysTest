@@ -56,6 +56,11 @@ namespace SysTest
             this.DialogResult = true;
         }
 
+        public void OnWebSaveBtn_Clicked(object sender, RoutedEventArgs e)
+        {
+
+        }
+
         public void OnTcpSaveBtn_Clicked(object sender, RoutedEventArgs e)
         {
             ushort p;
