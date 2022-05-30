@@ -52,7 +52,7 @@ namespace SysTest
 
         public void OnDnsSaveBtn_Clicked(object sender, RoutedEventArgs e)
         {
-            _result = new DNSTest(dns_test_name.Text, dns_test_target.Text, DNSRecordType.ANY);
+            _result = new DNSTest(dns_test_name.Text, dns_test_target.Text, DNSRecordType.ANY, dns_server_name.Text);
             this.DialogResult = true;
         }
 
@@ -124,6 +124,7 @@ namespace SysTest
                 case TestType.Dns:
                     dns_test_name.Text = data.Name;
                     dns_test_target.Text = data.Target;
+                    dns_server_name.Text = data.DNSServer;
                     break;
                 case TestType.Web:
                     break;
