@@ -53,7 +53,13 @@ namespace SysTest
 
         public void OnDnsSaveBtn_Clicked(object sender, RoutedEventArgs e)
         {
-            _result = new DNSTest(dns_test_name.Text, dns_test_target.Text, DNSRecordType.ANY, dns_server_name.Text);
+            DNSRecordType rt = DNSRecordType.ANY;
+            if (dns_test_a.IsChecked == true)
+                rt = DNSRecordType.A;
+            if(dns_test_aaaa.IsChecked == true)
+                rt = DNSRecordType.AAAA;
+
+            _result = new DNSTest(dns_test_name.Text, dns_test_target.Text, rt, dns_server_name.Text);
             this.DialogResult = true;
         }
 

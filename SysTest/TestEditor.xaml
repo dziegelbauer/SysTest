@@ -58,9 +58,9 @@
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="3">
                         <Label>Record Type:</Label>
-                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0" IsChecked="True">A</RadioButton>
-                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">AAAA</RadioButton>
-                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0">Any</RadioButton>
+                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0" IsChecked="True" x:Name="dns_test_a">A</RadioButton>
+                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0" x:Name="dns_test_aaaa">AAAA</RadioButton>
+                        <RadioButton VerticalAlignment="Center" Margin="3,0,0,0" x:Name="dns_test_any">Any</RadioButton>
                     </StackPanel>
                     <StackPanel Orientation="Horizontal" Grid.Row="4">
                         <Button Content="Save" VerticalAlignment="Top" Height="25" Width="40" Margin="3,0,0,0" IsDefault="True" Click="OnDnsSaveBtn_Clicked"></Button>
