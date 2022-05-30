@@ -5,6 +5,7 @@
     <TargetFramework>net6.0-windows</TargetFramework>
     <Nullable>enable</Nullable>
     <UseWPF>true</UseWPF>
+    <ApplicationIcon>Images\Test.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,11 @@
     <None Remove="Images\Save.png" />
     <None Remove="Images\StatusError.png" />
     <None Remove="Images\StatusOK.png" />
+    <None Remove="Images\Test.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Images\Test.ico" />
   </ItemGroup>
 
   <ItemGroup>
@@ -35,6 +41,7 @@
     <Resource Include="Images\Save.png" />
     <Resource Include="Images\StatusError.png" />
     <Resource Include="Images\StatusOK.png" />
+    <Resource Include="Images\Test.png" />
   </ItemGroup>
 
 </Project>

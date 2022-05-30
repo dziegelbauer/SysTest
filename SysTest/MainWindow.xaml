@@ -6,12 +6,16 @@
         xmlns:local="clr-namespace:SysTest"
         x:Class="SysTest.MainWindow"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="SysTest" Height="450" Width="800" Icon="/SysTest;component/Images/Test.png">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="10*"/>
-            <ColumnDefinition Width="89*"/>
-            <ColumnDefinition Width="227*"/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition Width="6*"/>
+            <ColumnDefinition Width="22*"/>
+            <ColumnDefinition Width="67*"/>
+            <ColumnDefinition Width="31*"/>
+            <ColumnDefinition Width="172*"/>
+            <ColumnDefinition Width="24*"/>
             <ColumnDefinition Width="84*"/>
             <ColumnDefinition Width="390*"/>
         </Grid.ColumnDefinitions>
@@ -20,7 +24,7 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
-        <ToolBar Grid.Row="0" Grid.ColumnSpan="5" >
+        <ToolBar Grid.Row="0" Grid.ColumnSpan="9" >
             <StackPanel Orientation="Horizontal">
                 <Button Width="25" Margin="3,0,0,0" x:Name="new_testplan_btn" Click="OnNewTestPlan_Clicked" ToolTip="New Test Plan">
                     <Image Source="/SysTest;component/Images/NewTestPlan.png"/>
@@ -45,7 +49,7 @@
                 </Button>
             </StackPanel>
         </ToolBar>
-        <Grid Grid.Row="1" Grid.ColumnSpan="5">
+        <Grid Grid.Row="1" Grid.ColumnSpan="9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="200"/>
                 <ColumnDefinition Width="*" />
@@ -127,6 +131,6 @@
                 </ListView.View>
             </ListView>
         </Grid>
-        <StatusBar Grid.Row="1" Grid.ColumnSpan="5" Margin="0,374,0,0" Grid.RowSpan="2" />
+        <StatusBar Grid.Row="1" Grid.ColumnSpan="9" Margin="0,374,0,0" Grid.RowSpan="2" />
     </Grid>
 </Window>
