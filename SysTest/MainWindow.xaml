@@ -47,6 +47,9 @@
                 <Button Width="25" Margin="12,0,0,0" x:Name="run_testplan_btn" Click="OnRunTestPlan_Clicked" ToolTip="Run Test Plan">
                     <Image Source="/SysTest;component/Images/RunTest.png"/>
                 </Button>
+                <Button Width="25" Margin="3,0,0,0" x:Name="export_result_btn" Click="OnExportResult_Clicked" ToolTip="Export Test Results...">
+                    <Image Source="/SysTest;component/Images/Report.png"/>
+                </Button>
             </StackPanel>
         </ToolBar>
         <Grid Grid.Row="1" Grid.ColumnSpan="9">
