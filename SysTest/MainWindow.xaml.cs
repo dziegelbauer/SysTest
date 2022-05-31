@@ -315,5 +315,10 @@ namespace SysTest
                 _testResults.Add(result);
             }
         }
+
+        public void OnExportResult_Clicked(object sender, RoutedEventArgs e)
+        {
+            
+        }
     }
 }
