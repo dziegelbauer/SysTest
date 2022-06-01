@@ -51,6 +51,16 @@ namespace SysTest
             resolver.UseCache = false;
             var result = resolver.Query(Target, QueryType, DNS.QClass.ANY);
 
+            if(result.Error != "")
+            {
+                return new TestResult()
+                {
+                    Success = false,
+                    description = result.Error,
+                    name = Name
+                };
+            }
+
             if (result.Answers.Count > 0)
             {
                 return new TestResult()

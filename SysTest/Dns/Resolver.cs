@@ -32,8 +32,10 @@ namespace SysTest.DNS
 		{
 			get
 			{
-				return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-			}
+#pragma warning disable CS8603 // Possible null reference return.
+                return System.Reflection.Assembly.GetExecutingAssembly().GetName().Version?.ToString();
+#pragma warning restore CS8603 // Possible null reference return.
+            }
 		}
 
 		/// <summary>
@@ -143,7 +145,7 @@ namespace SysTest.DNS
 		/// <summary>
 		/// Verbose messages from internal operations
 		/// </summary>
-		public event VerboseEventHandler OnVerbose;
+		public event VerboseEventHandler? OnVerbose;
 		public delegate void VerboseEventHandler(object sender, VerboseEventArgs e);
 
 		public class VerboseEventArgs : EventArgs
@@ -244,7 +246,7 @@ namespace SysTest.DNS
 			}
 			set
 			{
-				IPAddress ip;
+				IPAddress? ip;
 				if (IPAddress.TryParse(value, out ip))
 				{
 					m_DnsServers.Clear();
@@ -283,14 +285,14 @@ namespace SysTest.DNS
 			m_ResponseCache.Clear();
 		}
 
-		private Response SearchInCache(Question question)
+		private Response? SearchInCache(Question question)
 		{
 			if (!m_UseCache)
 				return null;
 
 			string strKey = question.QClass + "-" + question.QType + "-" + question.QName;
 
-			Response response = null;
+			Response? response = null;
 
 			lock (m_ResponseCache)
 			{
@@ -496,7 +498,7 @@ namespace SysTest.DNS
 		public Response Query(string name, QType qtype, QClass qclass)
 		{
 			Question question = new Question(name, qtype, qclass);
-			Response response = SearchInCache(question);
+			Response? response = SearchInCache(question);
 			if (response != null)
 				return response;
 
@@ -514,7 +516,7 @@ namespace SysTest.DNS
 		public Response Query(string name, QType qtype)
 		{
 			Question question = new Question(name, qtype, QClass.IN);
-			Response response = SearchInCache(question);
+			Response? response = SearchInCache(question);
 			if (response != null)
 				return response;
 
@@ -584,9 +586,11 @@ namespace SysTest.DNS
 			{
 				if (answerRR.Type == Type.A)
 				{
-					// answerRR.RECORD.ToString() == (answerRR.RECORD as RecordA).Address
-					AddressList.Add(IPAddress.Parse((answerRR.RECORD.ToString())));
-					entry.HostName = answerRR.NAME;
+                    // answerRR.RECORD.ToString() == (answerRR.RECORD as RecordA).Address
+#pragma warning disable CS8604 // Possible null reference argument.
+                    AddressList.Add(IPAddress.Parse(answerRR.RECORD.ToString()));
+#pragma warning restore CS8604 // Possible null reference argument.
+                    entry.HostName = answerRR.NAME;
 				}
 				else
 				{
@@ -735,7 +739,7 @@ namespace SysTest.DNS
 		///</returns>
 		public IPHostEntry GetHostEntry(string hostNameOrAddress)
 		{
-			IPAddress iPAddress;
+			IPAddress? iPAddress;
 			if (IPAddress.TryParse(hostNameOrAddress, out iPAddress))
 				return GetHostEntry(iPAddress);
 			else
@@ -783,7 +787,7 @@ namespace SysTest.DNS
 			StreamReader sr = new StreamReader(strPath);
 			while (!sr.EndOfStream)
 			{
-				string strLine = sr.ReadLine();
+				string? strLine = sr.ReadLine();
 				if (strLine == null)
 					break;
 				int intI = strLine.IndexOf(';');
