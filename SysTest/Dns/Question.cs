@@ -79,7 +79,7 @@ namespace SysTest.DNS
 			QClass = (QClass)rr.ReadUInt16();
 		}
 
-		private byte[] WriteName(string src)
+		private byte[] WriteName(string? src)
 		{
 			if (!src.EndsWith("."))
 				src += ".";

@@ -50,7 +50,7 @@ namespace SysTest.DNS
 
 		public int CompareTo(object? objA)
 		{
-			RecordKX recordKX = objA as RecordKX;
+			RecordKX? recordKX = objA as RecordKX;
 			if (recordKX == null)
 				return -1;
 			else if (this.PREFERENCE > recordKX.PREFERENCE)

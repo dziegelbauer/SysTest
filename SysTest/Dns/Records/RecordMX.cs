@@ -44,7 +44,7 @@ namespace SysTest.DNS
 
 		public int CompareTo(object? objA)
 		{
-			RecordMX recordMX = objA as RecordMX;
+			RecordMX? recordMX = objA as RecordMX;
 			if (recordMX == null)
 				return -1;
 			else if (this.PREFERENCE > recordMX.PREFERENCE)
