@@ -20,6 +20,14 @@ namespace SysTest
         private DNSRecordType rtype = DNSRecordType.ANY;
         private string server;
 
+        /// <summary>
+		/// Create a new DNS test based on the provided parameters
+		/// </summary>
+		/// <param name="name">Name of the test (cosmetic)</param>
+		/// <param name="target">DNS name to query</param>
+        /// <param name="record_type">Type of record to query for (e.g. A, AAAA, etc)</param>
+        /// <param name="server">DNS server to query against</param>
+		/// <returns></returns>
         public DNSTest(string name, string target, DNSRecordType record_type, string server)
         {
             this.Target = target;
@@ -29,6 +37,11 @@ namespace SysTest
             this.server = server;
         }
 
+        /// <summary>
+		/// Create a new DNS test based on the provided TestStructure
+		/// </summary>
+		/// <param name="ts">TestStructure created by deserializing a JSON test plan</param>
+		/// <returns></returns>
         public DNSTest(TestStructure ts)
         {
             this.Target = ts.Target;
@@ -38,6 +51,10 @@ namespace SysTest
             this.server = ts.DNSServer;
         }
 
+        /// <summary>
+		/// Execute the DNS test with the assigned parameters
+		/// </summary>
+		/// <returns>TestResult object indicating success or failure</returns>
         public override TestResult Run()
         {
             var resolver = new DNS.Resolver();
@@ -83,35 +100,10 @@ namespace SysTest
             }
         }
 
-        /*
-        public override TestResult Run()
-        {
-            var reply = Dns.GetHostAddresses(target);
-
-            
-            if (reply != null)
-            {
-                return new TestResult()
-                {
-                    Success = true,
-                    description = $"Received {reply.Count()} results for {target}",
-                    name = Name
-                };
-            }
-            else
-            {
-                var error_string = $"No results found for {target}";
-
-                return new TestResult()
-                {
-                    Success = false,
-                    description = error_string,
-                    name = Name
-                };
-            }
-        }
-        */
-
+        /// <summary>
+		/// Create a TestStructure object to pass to the JSON serializer
+		/// </summary>
+		/// <returns>TestStructure object containing the test's data</returns>
         public override TestStructure Serialize()
         {
             return new TestStructure()
