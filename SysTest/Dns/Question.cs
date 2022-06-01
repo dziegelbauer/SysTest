@@ -48,8 +48,8 @@ namespace SysTest.DNS
 
 	public class Question
 	{
-		private string m_QName;
-		public string QName
+		private string? m_QName;
+		public string? QName
 		{
 			get
 			{

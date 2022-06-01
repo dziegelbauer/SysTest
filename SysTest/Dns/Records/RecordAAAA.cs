@@ -13,7 +13,7 @@ namespace SysTest.DNS
 {
 	public class RecordAAAA : Record
 	{
-		public System.Net.IPAddress Address;
+		public System.Net.IPAddress? Address;
 
 		public RecordAAAA(RecordReader rr)
 		{
@@ -29,9 +29,10 @@ namespace SysTest.DNS
 				rr.ReadUInt16()), out this.Address);
 		}
 
-		public override string ToString()
+		public override string? ToString()
 		{
-			return Address.ToString();
+			var retval = Address?.ToString();
+			return retval;
 		}
 
 	}
