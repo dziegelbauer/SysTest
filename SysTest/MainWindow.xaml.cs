@@ -330,6 +330,7 @@ namespace SysTest
             HTMLBuilder.Append("</head>\n");
             HTMLBuilder.Append("<body>\n");
             HTMLBuilder.Append("<table border='1px' cellpadding='1' cellspacing='1' bgcolor='lightyellow' style='font-family:Garamond; font-size:smaller'>\n");
+            HTMLBuilder.Append($"<tr>\n<td colspan='3'>Test Results: {DateTime.Now.ToString()}</td>\n</tr>\n");
             HTMLBuilder.Append("<tr>");
             HTMLBuilder.Append("<td>Result</td>\n");
             HTMLBuilder.Append("<td>Name</td>\n");
