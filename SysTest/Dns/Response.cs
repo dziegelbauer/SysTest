@@ -110,7 +110,9 @@ namespace SysTest.DNS
 				List<RecordMX> list = new List<RecordMX>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordMX record = answerRR.RECORD as RecordMX;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if(record!=null)
 						list.Add(record);
 				}
@@ -129,7 +131,9 @@ namespace SysTest.DNS
 				List<RecordTXT> list = new List<RecordTXT>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordTXT record = answerRR.RECORD as RecordTXT;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if (record != null)
 						list.Add(record);
 				}
@@ -147,7 +151,9 @@ namespace SysTest.DNS
 				List<RecordA> list = new List<RecordA>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordA record = answerRR.RECORD as RecordA;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if (record != null)
 						list.Add(record);
 				}
@@ -165,7 +171,9 @@ namespace SysTest.DNS
 				List<RecordPTR> list = new List<RecordPTR>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordPTR record = answerRR.RECORD as RecordPTR;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if (record != null)
 						list.Add(record);
 				}
@@ -183,7 +191,9 @@ namespace SysTest.DNS
 				List<RecordCNAME> list = new List<RecordCNAME>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordCNAME record = answerRR.RECORD as RecordCNAME;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if (record != null)
 						list.Add(record);
 				}
@@ -201,7 +211,9 @@ namespace SysTest.DNS
 				List<RecordAAAA> list = new List<RecordAAAA>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordAAAA record = answerRR.RECORD as RecordAAAA;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if (record != null)
 						list.Add(record);
 				}
@@ -219,7 +231,9 @@ namespace SysTest.DNS
 				List<RecordNS> list = new List<RecordNS>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordNS record = answerRR.RECORD as RecordNS;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if (record != null)
 						list.Add(record);
 				}
@@ -237,7 +251,9 @@ namespace SysTest.DNS
 				List<RecordSOA> list = new List<RecordSOA>();
 				foreach (AnswerRR answerRR in this.Answers)
 				{
+#pragma warning disable CS8600 // Converting possible null value to non-nullable type
 					RecordSOA record = answerRR.RECORD as RecordSOA;
+#pragma warning restore CS8600 // Converting possible null value to non-nullable type
 					if (record != null)
 						list.Add(record);
 				}
