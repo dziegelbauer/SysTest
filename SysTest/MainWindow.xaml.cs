@@ -318,7 +318,48 @@ namespace SysTest
 
         public void OnExportResult_Clicked(object sender, RoutedEventArgs e)
         {
-            
+            if(_testResults.Count == 0)
+            {
+                MessageBox.Show("There are no test results to export", "Export Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
+            var HTMLBuilder = new StringBuilder();
+            HTMLBuilder.Append("<html>\n");
+            HTMLBuilder.Append("<head>\n");
+            HTMLBuilder.Append("</head>\n");
+            HTMLBuilder.Append("<body>\n");
+            HTMLBuilder.Append("<table border='1px' cellpadding='1' cellspacing='1' bgcolor='lightyellow' style='font-family:Garamond; font-size:smaller'>\n");
+            HTMLBuilder.Append("<tr>");
+            HTMLBuilder.Append("<td>Result</td>\n");
+            HTMLBuilder.Append("<td>Name</td>\n");
+            HTMLBuilder.Append("<td>Notes</td>\n");
+            HTMLBuilder.Append("</tr>\n");
+
+            foreach(var item in _testResults)
+            {
+                HTMLBuilder.Append("<tr>\n");
+                HTMLBuilder.Append($"<td>{item.Success.ToString()}</td>\n");
+                HTMLBuilder.Append($"<td>{item.Name.ToString()}</td>\n");
+                HTMLBuilder.Append($"<td>{item.description.ToString()}</td>\n");
+                HTMLBuilder.Append("</tr>\n");
+            }
+
+            HTMLBuilder.Append("</table>\n");
+            HTMLBuilder.Append("</body>\n");
+            HTMLBuilder.Append("<html>");
+
+            var sfd = new SaveFileDialog();
+
+            sfd.Filter = "Test Results (*.htm)|*.htm|All Files (*.*)|*.*";
+
+            if(sfd.ShowDialog() == true)
+            {
+                var report_file = File.CreateText(sfd.FileName);
+                var report_content = HTMLBuilder.ToString();
+                report_file.Write(report_content);
+                report_file.Close();
+            }
         }
     }
 }
